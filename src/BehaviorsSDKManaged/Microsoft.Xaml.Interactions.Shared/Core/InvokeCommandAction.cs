@@ -8,19 +8,21 @@ using Microsoft.Xaml.Interactivity;
 #if WinUI
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
+#if WINDOWS_UWP
 using Microsoft.UI.Xaml.Input;
+#else
 using System.Windows.Input;
+#endif
 #else
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using System.Windows.Input;
 #endif
 
 namespace Microsoft.Xaml.Interactions.Core
 {
     /// <summary>
-    /// Executes a specified <see cref="System.Windows.Input.ICommand"/> when invoked. 
+    /// Executes a specified <see cref="global::System.Windows.Input.ICommand"/> when invoked. 
     /// </summary>
     public sealed class InvokeCommandAction : DependencyObject, IAction
     {
@@ -90,7 +92,7 @@ namespace Microsoft.Xaml.Interactions.Core
         }
 
         /// <summary>
-        /// Gets or sets the parameter that is passed to <see cref="System.Windows.Input.ICommand.Execute(object)"/>.
+        /// Gets or sets the parameter that is passed to <see cref="global::System.Windows.Input.ICommand.Execute(object)"/>.
         /// If this is not set, the parameter from the <seealso cref="Execute(object, object)"/> method will be used.
         /// This is an optional dependency property.
         /// </summary>
@@ -159,7 +161,7 @@ namespace Microsoft.Xaml.Interactions.Core
         /// <summary>
         /// Executes the action.
         /// </summary>
-        /// <param name="sender">The <see cref="System.Object"/> that is passed to the action by the behavior. Generally this is <seealso cref="Microsoft.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
+        /// <param name="sender">The <see cref="global::System.Object"/> that is passed to the action by the behavior. Generally this is <seealso cref="Microsoft.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
         /// <param name="parameter">The value of this parameter is determined by the caller.</param>
         /// <returns>True if the command is successfully executed; else false.</returns>
         public object Execute(object sender, object parameter)
